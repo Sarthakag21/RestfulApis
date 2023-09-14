@@ -2,11 +2,13 @@ package com.employee.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Random;
+
 @Entity
 @Table(name = "Employee")
 public class employeeEntity {
     @Id
-    private int id;
+    public int id;
     @Column(name = "FullName")
     private String name;
     private int age;
@@ -24,6 +26,8 @@ public class employeeEntity {
     @Column(name = "IfscCode")
     private String IFSC;
     private long bankNumber;
+    @Column(name = "EmployeeID")
+    private String EmpID = EmployeeID();
 
     public int getId() {
         return id;
@@ -119,5 +123,20 @@ public class employeeEntity {
 
     public void setBankNumber(long bankNumber) {
         this.bankNumber = bankNumber;
+    }
+
+    public String getEmpID() {
+        return EmpID;
+    }
+
+    public void setEmpID(String empID) {
+        EmpID = empID;
+    }
+
+    public String EmployeeID(){
+        Random ran = new Random();
+        String prefix = "E";
+        int id = ran.nextInt(8999)+1000;
+        return prefix+id;
     }
 }
