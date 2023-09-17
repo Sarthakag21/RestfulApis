@@ -12,4 +12,5 @@ public interface billingInterface {
     public void deleteCustomerByID(int id);
     public void deleteCustomer();
     public String getName(int id);
+    public billingEntity updateCustomer(billingEntity billingEntity, int id);
 }

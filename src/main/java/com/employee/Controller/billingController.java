@@ -55,4 +55,17 @@ public class billingController {
         billingInterfacefinal.deleteCustomer();
         return ResponseEntity.status(HttpStatus.OK).body("All record deleted");
     }
+
+    @PutMapping("/updateCustomer/{id}")
+    public ResponseEntity<String> updateCustomer(@RequestBody billingEntity billingEntity, @PathVariable int id){
+        Optional<billingEntity> optional = billingInterfacefinal.customerByID(id);
+        if(optional.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Record not found");
+        }
+        else{
+            billingEntity.setId(id);
+            billingInterfacefinal.updateCustomer(billingEntity, id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body("Updated Successfully");
+        }
+    }
 }
