@@ -11,4 +11,5 @@ public interface expenseInterface {
     public List<expenseEntity> findAllExpense();
     public void deleteExpenseByID(int id);
     public void deleteAllExpense();
+    public expenseEntity updateExpense(expenseEntity expenseEntity, int id);
 }

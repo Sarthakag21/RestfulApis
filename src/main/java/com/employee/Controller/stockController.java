@@ -60,4 +60,17 @@ public class stockController {
         stockInterfacefinal.deleteAllStock();
         return ResponseEntity.status(HttpStatus.OK).body("Stock data is successfully deleted.");
     }
+
+    @PutMapping("/updateStock/{id}")
+    public ResponseEntity<String> updateStock(@RequestBody stockEntity stockEntity, @PathVariable int id){
+        Optional<stockEntity> optional = stockInterfacefinal.stockByID(id);
+        if(optional.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Record not found");
+        }
+        else{
+            stockEntity.setId(id);
+            stockInterfacefinal.updateStock(stockEntity, id);
+            return  ResponseEntity.status(HttpStatus.ACCEPTED).body("Updated Successfully");
+        }
+    }
 }

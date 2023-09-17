@@ -12,4 +12,5 @@ public interface stockInterface {
     public void deleteStockByID(int id);
     public void deleteAllStock();
     public String getProduct(int id);
+    public stockEntity updateStock(stockEntity stockEntity, int id);
 }

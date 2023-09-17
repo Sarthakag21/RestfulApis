@@ -63,4 +63,20 @@ public class expenseController {
         expenseInterfacefinal.deleteAllExpense();
         return ResponseEntity.status(HttpStatus.OK).body("All data deleted");
     }
+
+    @PutMapping("/updateExpense/{id}")
+    public ResponseEntity<String> updateExpense(@RequestBody expenseEntity expenseEntity, @PathVariable int id) {
+        // First, check if the entity with the given ID exists in the database
+        Optional<expenseEntity> optional = expenseInterfacefinal.findExpenseByID(id);
+        if (optional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Record not found");
+        }
+        else{
+            // Set the ID of the updatedExpense to match the path variable ID
+            expenseEntity.setId(id);
+            // Save the updated expense to the database
+            expenseInterfacefinal.updateExpense(expenseEntity, id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body("Updated Successfully");
+        }
+    }
 }
