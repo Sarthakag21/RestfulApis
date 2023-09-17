@@ -17,14 +17,14 @@ public class employeeEntity {
     @Column(name = "EmailID")
     private String mail;
     @Column(name = "AdhaarCardNumber")
-    private Long adhaarCard;
+    private long adhaarCard;
     private String address;
     private int salary;
     @Column(name = "PanNumber")
     private String pan;
     private String bankName;
     @Column(name = "IfscCode")
-    private String IFSC;
+    private String ifsc;
     private long bankNumber;
     @Column(name = "EmployeeID")
     private String EmpID = EmployeeID();
@@ -73,7 +73,7 @@ public class employeeEntity {
         return adhaarCard;
     }
 
-    public void setAdhaarCard(Long adhaarCard) {
+    public void setAdhaarCard(long adhaarCard) {
         this.adhaarCard = adhaarCard;
     }
 
@@ -109,12 +109,12 @@ public class employeeEntity {
         this.bankName = bankName;
     }
 
-    public String getIFSC() {
-        return IFSC;
+    public String getIfsc() {
+        return ifsc;
     }
 
-    public void setIFSC(String IFSC) {
-        this.IFSC = IFSC;
+    public void setIfsc(String ifsc) {
+        this.ifsc = ifsc;
     }
 
     public long getBankNumber() {

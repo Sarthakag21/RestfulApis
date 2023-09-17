@@ -13,5 +13,6 @@ public interface employeeInterface {
     public void deleteEmployeeById(int id);
     public void deleteEmployee();
     public String getName(int id);
+    public employeeEntity updateEmployee(employeeEntity employeeEntity, int id);
 
 }

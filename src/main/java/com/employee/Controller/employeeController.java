@@ -66,4 +66,17 @@ public class employeeController {
         return ResponseEntity.status(HttpStatus.OK).body("Data is Succesfully Deleted");
     }
 
+    @PutMapping("/updateEmployee/{id}")
+    public ResponseEntity<String> updateEmployee(@RequestBody employeeEntity employeeEntity, @PathVariable int id){
+        Optional<employeeEntity> optional = employeeInterfacefinal.employeeById(id);
+        if(optional.isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Record not found");
+        }
+        else{
+            employeeEntity.setId(id);
+            employeeInterfacefinal.updateEmployee(employeeEntity, id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body("Updated Successfully");
+        }
+    }
+
 }
